@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>First Innings Score Predictor</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='psl-favicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class='container-heading'> <span class='heading_first'>First Innings Score Predictor for Pakistan Super League (PSL) </span>
+    </div>
+
+    <div style="text-align: center;">
+        <h4 style='color:black'>{{ val }}</h4>
+    </div>
+
+    <div class="prediction-area" style='margin-top: 45px;'>
+
+        <div class='psl-banner-left'>
+            <div class="slider-frame">
+                <div class="slide-images-up">
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='iu1.jpg',width=672, height=1015,mode='crop', quality=95) }}" alt="Islamabad United">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='kk1.jpg') }}" alt="Karachi Kings">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='pz1.jpg') }}" alt="Pashawar Zalmi">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='lq1.jpg') }}" alt="Lahore Gladiator">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='babar.jpg') }}" alt="Karachi Kings">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='lq2.jpg') }}" alt="Lahore Gladiator">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='ms1.jpg') }}" alt="Multan Sultan">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='qg1.jpg') }}" alt="Quetta Gladiators">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='div2'>
+            <form action="predict" method="POST">
+                <select class="form-input align-center" name="batting-team">
+                    <option value="none">--- Select a Batting team ---</option>
+                    <option value="Islamabad United">Islamabad United</option>
+                    <option value="Karachi Kings">Karachi Kings</option>
+                    <option value="Lahore Qalandars">Lahore Qalandars</option>
+                    <option value="Multan Sultans">Multan Sultans</option>
+                    <option value="Peshawar Zalmi">Peshawar Zalmi</option>
+                    <option value="Quetta Gladiators">Quetta Gladiators</option>
+                </select><br>
+
+                <select class="form-input align-center" name="bowling-team">
+                    <option value="none">--- Select a Bowling team ---</option>
+                    <option value="Islamabad United">Islamabad United</option>
+                    <option value="Karachi Kings">Karachi Kings</option>
+                    <option value="Lahore Qalandars">Lahore Qalandars</option>
+                    <option value="Multan Sultans">Multan Sultans</option>
+                    <option value="Peshawar Zalmi">Peshawar Zalmi</option>
+                    <option value="Quetta Gladiators">Quetta Gladiators</option>
+                </select><br>
+
+                <select class="form-input align-center" name="venue">
+                    <option value="none">--- Select a Venue ---</option>
+                    <option value="Dubai International Cricket Stadium, Dubai">Dubai International Cricket Stadium,
+                        Dubai</option>
+                    <option value="Gaddafi Stadium, Lahore">Gaddafi Stadium, Lahore</option>
+                    <option value="Multan Cricket Stadium, Multan">Multan Cricket Stadium, Multan</option>
+                    <option value="National Stadium, Karachi">National Stadium, Karachi</option>
+                    <option value="Rawalpindi Cricket Stadium, Rawalpindi">Rawalpindi Cricket Stadium, Rawalpindi</option>
+                    <option value="Sharjah Cricket Stadium, Sharjah">Sharjah Cricket Stadium, Sharjah</option>
+                    <option value="Sheikh Zayed Stadium, Abu Dhabi">Sheikh Zayed Stadium, Abu Dhabi</option>
+                </select><br>
+
+                <input class="form-input" type="text" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
+
+                <input class="form-input" type="text" name="runs" placeholder="Runs eg. 64"><br>
+
+                <input class="form-input" type="text" name="wickets" placeholder="Wickets eg. 4"><br>
+
+                <input class="form-input" type="text" name="runs_in_prev_5"
+                    placeholder="Runs scored in previous 5 Overs eg. 42"><br>
+
+                <input class="form-input" type="text" name="wickets_in_prev_5"
+                    placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
+
+                <input type="submit" class="myButton" value="Predict Score">
+            </form>
+        </div>
+
+        <div class='psl-banner-right'>
+            <div class="slider-frame">
+                <div class="slide-images-down">
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='iu1.jpg') }}" alt="Islamabad United">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='kk1.jpg') }}" alt="Karachi Kings">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='pz1.jpg') }}" alt="Pashawar Zalmi">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='lq1.jpg') }}" alt="Lahore Gladiator">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='babar.jpg') }}" alt="Karachi Kings">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='lq2.jpg') }}" alt="Lahore Gladiator">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='ms1.jpg') }}" alt="Multan Sultan">
+                    </div>
+                    <div class="image-container">
+                        <img class="image-width" src="{{ url_for('static', filename='qg1.jpg') }}" alt="Quetta Gladiators">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
