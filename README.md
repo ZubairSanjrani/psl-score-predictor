@@ -6,4 +6,5 @@ The PSL score predictor project is about predicting score of batting team.
 * numpy
 * pandas
 * matplotlib
+* seaborn
 * sklearn
